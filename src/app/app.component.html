@@ -1,0 +1,36 @@
+<mat-card>
+	<mat-toolbar color="primary">
+		<mat-icon>loop</mat-icon>
+		<h1>
+			Dynamicly Loaded routes
+		</h1>
+		<span class="spacer"></span>
+		<button mat-button *ngFor="let route of router.config" [routerLink]="route.path">
+      <mat-icon *ngIf="route.data && (route.path !== '') && route.data.icon">
+        {{route.data.icon}}
+      </mat-icon>
+      <span class="menuItemText">Go To {{route.path}}</span>
+    </button>
+	</mat-toolbar>
+	<p>This example demonstrates how Angular can load routes dynamically. Uses for this include:</p>
+	<ul>
+		<li>Users with different entry points depending on their permissions or settings</li>
+		<li>
+			Pages that load dynamically from a database
+		</li>
+		<li>
+			dynamically updating icons, link text, or components that the links go to without code changes
+		</li>
+		<li>Reducing the amount of code changes, and shifting work to data changes</li>
+		<li>Easier to test and mock for different user's environments</li>
+	</ul>
+</mat-card>
+
+<mat-card>
+	<mat-toolbar color="primary">
+		<h2>
+			Router Outlet Here:
+		</h2>
+	</mat-toolbar>
+	<router-outlet></router-outlet>
+</mat-card>
